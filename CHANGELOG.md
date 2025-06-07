@@ -27,6 +27,7 @@ and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `check_contracts` no longer makes methods immediately enforce Representation Invariant checks when setting attributes of instances with the same type (one `Node` modifies another `Node` instance) and only checks RIs for these instances after the method returns.
 - Fixed error in `contracts` where comments in docstring assertions are not removed while parsing
 - Improved error message in `patches/transforms.py` where CFGVisitor is run
+- Fixed a bug in AccumulationTable where loop variable names weren't being captured for all nested targets.
 
 ### 📚 Documentation Updates
 
@@ -38,6 +39,10 @@ and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Improved `get_valid_files_to_check` function by removing unreachable code.
 - Refactored `test_check.py` to use `pytest.mark.parametrize` annotation, improving test isolation and extracting inputs from test functions
 - Added test case to `test_check.py` for better coverage of `colour_messages_by_type`
+- Removed unused imports from `python_ta` module
+- Wrapped type-only imports in if `TYPE_CHECKING` guards
+- Refactored `render_pep8_errors` to use a dict that maps error codes to error functions instead of repeated conditional statements
+- Added two test cases to `test_accumulation_table.py` to verify that `AccumulationTable` correctly extracts loop variables from nested tuple structures.
 
 ## [2.10.1] - 2025-02-19
 
